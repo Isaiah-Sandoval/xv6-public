@@ -496,6 +496,23 @@ kill(int pid)
   return -1;
 }
 
+/*
+int 
+set_priority(int pid, int priority)
+{
+  struct proc *p;
+
+  acquire(&ptable.lock);
+  for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
+    if (p->pid == pid) {
+      if (0 <= priority && priority <= 39) {
+        p-> == priority;
+      }
+    }
+  }
+}
+
+*/
 //PAGEBREAK: 36
 // Print a process listing to console.  For debugging.
 // Runs when user types ^P on console.
