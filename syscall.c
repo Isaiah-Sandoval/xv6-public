@@ -128,6 +128,7 @@ static int (*syscalls[])(void) = {
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
 [SYS_set_priority] sys_set_priority,
+[SYS_get_priority] SYS_get_priority,
 };
 
 void
