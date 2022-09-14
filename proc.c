@@ -505,9 +505,9 @@ set_priority(int pid, int priority)
   for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
     if (p->pid == pid) {
       if (0 <= priority && priority <= 39) {
-        //p->  = priority;
+        p->nice  = priority;
       } else {
-        //p->  = max(0, min(p->, 39));
+        p->nice  = max(0, min(p->nice, 39));
       }
       release(&ptable.lock);
       return 0;
@@ -526,7 +526,7 @@ get_priority(int pid)
   for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
     if (p->pid == pid) {
       release(&ptable.lock);
-      //return p->;
+      return p->nice;
     }
   }
   release(&ptable.lock);
